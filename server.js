@@ -22,7 +22,9 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(logger('dev'))
-// Sessions
+
+
+// Sessions (This is to store the user's session)
 app.use(
     session({
       secret: 'keyboard cat',

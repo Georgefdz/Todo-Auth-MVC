@@ -3,7 +3,8 @@ const router = express.Router()
 const todosController = require('../controllers/todos') 
 const { ensureAuth } = require('../middleware/auth')
 
-router.get('/', ensureAuth, todosController.getTodos)
+
+router.get('/', ensureAuth, todosController.getTodos)//ensureAuth is a middleware function that checks if the user is authenticated (logged in)
 
 router.post('/createTodo', todosController.createTodo)
 
