@@ -16,9 +16,11 @@ require('dotenv').config({path: './config/.env'})// This is to load the environm
 require('./config/passport')(passport)
 
 connectDB()
-
+//This is to set the view engine to ejs
 app.set('view engine', 'ejs')
+//This is to serve static files (css, images, etc) from public folder
 app.use(express.static('public'))
+//Parsing incoming requests with urlencoded and json middleware
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(logger('dev'))// This is to log activate morgan and log requests to the console
@@ -38,11 +40,14 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 
+//Flash messages middleware
 app.use(flash())
-  
+
+//Routing
 app.use('/', mainRoutes)
 app.use('/todos', todoRoutes)
  
+//Starting the server
 app.listen(process.env.PORT, ()=>{
     console.log('Server is running, you better catch it!')
 })    

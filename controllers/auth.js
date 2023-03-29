@@ -13,8 +13,8 @@ const User = require('../models/User')
   
   exports.postLogin = (req, res, next) => {
     const validationErrors = []
-    if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
-    if (validator.isEmpty(req.body.password)) validationErrors.push({ msg: 'Password cannot be blank.' })
+    if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' }) //This is to validate the email
+    if (validator.isEmpty(req.body.password)) validationErrors.push({ msg: 'Password cannot be blank.' }) //This is to validate the password
   
     if (validationErrors.length) {
       req.flash('errors', validationErrors)
